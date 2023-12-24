@@ -18,8 +18,8 @@ app.use(morgan('dev'))
 //MISSION ROUTES
 app.use('/api/mission', missionRoutes)
 
-mongoose.connection.once('open', () => {
-    app.listen(process.env.PORT, () => {
-        console.log(`listening on port http://localhost:${process.env.PORT} Gamaforce`)
-    })
-})
+// mongoose.connection.once('open', () => {
+//     app.listen(process.env.PORT, () => {
+//         console.log(`listening on port http://localhost:${process.env.PORT} Gamaforce`)
+//     })
+// })
