@@ -20,7 +20,19 @@ app.use(morgan('dev'))
 app.use('/api/mission', missionRoutes)
 
 mongoose.connection.once('open', () => {
+    // Replace app.listen with Vercel's function
+    const vercel = require('@vercel/serverless/next')
     app.listen(port, () => {
         console.log(`listening on port http://localhost:${port} Gamaforce`)
+    })
+    vercel.start(app, {
+        port: process.env.PORT,
+        serverless: true,
+        routes: [
+            {
+                src: '/api/mission',
+                dest: '/api/mission'
+            }
+        ]
     })
 })
